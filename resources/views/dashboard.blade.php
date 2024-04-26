@@ -12,10 +12,10 @@
         </div>
     </div>
     
-    <div class="text-6xl font-medium text-center pt-20">
+    <div class="text-6xl bg-black text-yellow-300 font-medium text-center pt-20">
         <h1>Event categories</h1>
     </div>
-    <div>
+    <div class=" bg-black">
         <div class='lg:flex lg:flex-row flex flex-col gap-8 p-20'>
             <div class='flex flex-col w-full lg:w-[100%] gap-8 rounded'>
                 <div class='overflow-hidden relative'>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="text-6xl font-medium text-center pb-10">
+    <div class="text-6xl font-medium text-center pb-10 bg-black text-yellow-300">
         <h1>Our Event</h1>
     </div>
     <div class="flex p-20  gap-14 bg-black ">
@@ -93,7 +93,7 @@
         </div>
     </div>
     {{-- footer --}}
-    <div class="bg-black text-white flex flex-col gap-5 p-3">
+    <div class="bg-black text-white flex flex-col gap-5 p-3  border-t-2 border-y-amber-300">
         <div class="flex lg:flex flex-col lg:flex-row justify-around p-20 gap-9 lg:gap-9">
             <div class="lg:flex lg:flex-col lg:gap-2 flex-col gap-2">
                 <h5>GET IN TOUCH</h5>

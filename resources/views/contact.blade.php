@@ -1,47 +1,47 @@
 <!-- resources/views/contact.blade.php -->
 
 <x-app-layout>
-    <div class="bg-gray-100 py-12 flex ">
-        <div class="">
-            <img src="{{asset("img/contact-img.png")}}" alt="">
+    <div class="bg-black p-28 flex flex-col sm:flex-row items-center justify-center">
+        <div class="w-[30vw]">
+            <img src="{{ asset('img/contact-img.png') }}" alt="Contact Us Image">
         </div>
-        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="max-w-xl mx-auto w-[40vw] sm:px-6 lg:px-8">
+            <div class="bg-emerald-400 shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg font-semibold leading-6 text-gray-900">Contact Us</h3>
+                    <h3 class=" text-3xl font-semibold leading-6 text-white">Contact Us</h3>
                 </div>
                 <div class="border-t border-gray-200">
                     @if (session('success'))
-                            <div class="alert alert-success bg-green-400 text-green-900 p-8" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+                        <div class="alert alert-success bg-green-400 text-green-900 p-8" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <form action="{{ route('contact.store') }}" method="POST">
                         @csrf
-                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <label for="name" class="block text-sm font-medium text-gray-700 sm:col-span-1">Name</label>
+                        <div class="bg-emerald-400 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <label for="name" class="block text-2xl font-medium text-white sm:col-span-1">Name</label>
                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                 <input type="text" name="name" id="name" autocomplete="name" required
                                     class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
                             </div>
                         </div>
-                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <label for="email" class="block text-sm font-medium text-gray-700 sm:col-span-1">Email</label>
+                        <div class="bg-emerald-400 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <label for="email" class="block text-2xl font-medium text-white sm:col-span-1">Email</label>
                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                 <input type="email" name="email" id="email" autocomplete="email" required
                                     class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
                             </div>
                         </div>
-                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <label for="message" class="block text-sm font-medium text-gray-700 sm:col-span-1">Message</label>
+                        <div class="bg-emerald-400 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <label for="message" class="block text-2xl font-medium text-white  sm:col-span-1">Message</label>
                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                 <textarea id="message" name="message" rows="4" required
                                     class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"></textarea>
                             </div>
                         </div>
-                        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                        <div class="px-4 py-3 bg-emerald-400 text-right sm:px-6">
                             <button type="submit"
-                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 Send
                             </button>
                         </div>
@@ -50,6 +50,7 @@
             </div>
         </div>
     </div>
+    
     <div class="bg-black text-white flex flex-col gap-5 p-3">
         <div class="flex lg:flex flex-col lg:flex-row justify-around p-20 gap-9 lg:gap-9">
             <div class="lg:flex lg:flex-col lg:gap-2 flex-col gap-2">
