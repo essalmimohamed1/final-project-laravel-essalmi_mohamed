@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Stripe;
 
 class EventController extends Controller
 {
@@ -129,5 +130,45 @@ class EventController extends Controller
         return response()->json([
             'events' => $events,
         ]);
+    }
+    public function session(Request $request, $eventId)
+    {
+        // dd($eventId);
+        if (!Auth::check()) {
+            // Handle unauthenticated user (e.g., redirect to login page)
+            return redirect()->route('register');
+        }
+
+        $user = Auth::user();
+        if (!$user->events()->where('calendar_id', $eventId)->exists()) {
+            // return back()->with('error', 'You have already bought this event.');
+            $user->events()->attach($eventId);
+        }
+
+
+
+
+        Stripe::setApiKey(config('stripe.sk'));
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items'  => [
+                [
+                    'price_data' => [
+                        'currency'     => 'mad',
+                        'product_data' => [
+                            "name" => $request->name,
+                            "description" => $request->description
+                        ],
+                        'unit_amount'  => $request->price . '00', // amount should be in cents
+                    ],
+                    'quantity'   => 1,
+                ],
+            ],
+            'mode'        => 'payment', // the mode  of payment
+            'success_url' => route('success'), // route when success 
+            'cancel_url'  => route('dashboard'), // route when  failed or canceled
+        ]);
+
+        return redirect()->away($session->url);
     }
 }

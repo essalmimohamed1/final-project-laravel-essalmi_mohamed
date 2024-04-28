@@ -5,6 +5,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\stripeController;
 use Illuminate\Support\Facades\Route;
 
 // Route for the home page
@@ -46,5 +47,8 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
 
-
+// buy
+Route::post('/event/pay/{eventId}', [EventController::class, 'session'])->name('event.pay');
+Route::get('/session', [stripeController::class, 'session']);
+Route::get('/success', [StripeController::class, 'success'])->name('success');
 require __DIR__.'/auth.php';

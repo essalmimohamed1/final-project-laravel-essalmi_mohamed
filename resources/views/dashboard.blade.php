@@ -82,10 +82,16 @@
             <div class="px-6 pb-4">
                 <h1 class="text-xl font-bold text-red-400">Price: {{ $event->price }} DH</h1>
             </div>
-            <div class="px-6 pb-4">
-                <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">
-                    Add to Cart
-                </button>
+            <div class="flex gap-3">
+                <form action="{{ route('event.pay', $event->id) }}" method="post">
+                    @csrf
+                    <input type="hidden" name="eventId" value="{{ $event->id }}">
+                    <!-- Use eventId instead of event_id -->
+                    <input type="hidden" name="name" value="{{ $event->name }}">
+                    <input type="hidden" name="price" value="{{ $event->price }}">
+                    <input type="hidden" name="description" value="{{ $event->description }}">
+                    <button class="btn btn-primary text-red-700 p-7 text-2xl rounded-2xl ml-16">Buy event</button>
+            </form>
             </div>
         </div>
         @endforeach
