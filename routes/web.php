@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\About;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
@@ -40,6 +42,9 @@ Route::delete('/organisateur/{organisateur}', [EventController::class, 'destroy'
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
 
 
 require __DIR__.'/auth.php';

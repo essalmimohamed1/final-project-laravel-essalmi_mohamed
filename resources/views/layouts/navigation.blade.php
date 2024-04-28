@@ -17,13 +17,13 @@
                         {{ __('Home') }}
                     </x-nav-link>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('event.index')" :active="request()->routeIs('event.index')">
-                            {{ __('create_event') }}
+                        <x-nav-link :href="route('contact.create')" :active="request()->routeIs('contact.create')">
+                            {{ __('Contact') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('contact.create')" :active="request()->routeIs('contact.create')">
-                            {{ __('Contact Us') }}
+                        <x-nav-link :href="route('about.index')" :active="request()->routeIs('about.index')">
+                            {{ __('About') }}
                         </x-nav-link>
                     </div>
                 </div>
@@ -78,8 +78,8 @@
                 <x-responsive-nav-link :href="route('dashboard')">
                     {{ __('Home') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('event.index')">
-                    {{ __('create_event') }}
+                <x-responsive-nav-link :href="route('about.index')">
+                    {{ __('About') }}
                 </x-responsive-nav-link>
                 
 

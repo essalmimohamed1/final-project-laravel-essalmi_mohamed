@@ -1,18 +1,18 @@
 <!-- resources/views/contact.blade.php -->
 
 <x-app-layout>
-    <div class="bg-black p-28 flex flex-col sm:flex-row items-center justify-center">
-        <div class="w-[30vw]">
-            <img src="{{ asset('img/contact-img.png') }}" alt="Contact Us Image">
+    <div class="bg-black p-8 md:p-16 lg:p-28 flex flex-col sm:flex-row items-center justify-center">
+        <div class="w-full sm:w-1/2 lg:w-[30vw] xl:w-[25vw]">
+            <img src="{{ asset('img/contact-img.png') }}" alt="Contact Us Image" class="w-full">
         </div>
-        <div class="max-w-xl mx-auto w-[40vw] sm:px-6 lg:px-8">
+        <div class="max-w-xl mx-auto w-full sm:w-1/2 lg:w-[40vw] xl:w-[50vw] sm:px-6 lg:px-8 mt-8 sm:mt-0">
             <div class="bg-emerald-400 shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                    <h3 class=" text-3xl font-semibold leading-6 text-white">Contact Us</h3>
+                    <h3 class="text-3xl font-semibold leading-6 text-white">Contact Us</h3>
                 </div>
                 <div class="border-t border-gray-200">
                     @if (session('success'))
-                        <div class="alert alert-success bg-green-400 text-green-900 p-8" role="alert">
+                        <div class="alert alert-success bg-green-400 text-green-900 p-4 sm:p-8" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="bg-emerald-400 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <label for="message" class="block text-2xl font-medium text-white  sm:col-span-1">Message</label>
+                            <label for="message" class="block text-2xl font-medium text-white sm:col-span-1">Message</label>
                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                 <textarea id="message" name="message" rows="4" required
                                     class="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"></textarea>
@@ -50,6 +50,7 @@
             </div>
         </div>
     </div>
+    
     
     <div class="bg-black text-white flex flex-col gap-5 p-3">
         <div class="flex lg:flex flex-col lg:flex-row justify-around p-20 gap-9 lg:gap-9">

@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
                 "name" => "renter", 
                 "guard_name" => "web"
             ],
+            
         ]);
     }
 }

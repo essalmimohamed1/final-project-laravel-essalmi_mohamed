@@ -62,36 +62,35 @@
             </div>
         </div>
     </div>
-    <div class="text-6xl font-medium text-center pb-10 bg-black text-yellow-300">
-        <h1>Our Event</h1>
+    <div class="text-4xl font-medium text-center py-8 md:py-10 bg-black text-yellow-300">
+        <h1>Our Events</h1>
     </div>
-    <div class="flex p-20  gap-14 bg-black ">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 md:p-10 lg:p-20 bg-black">
         @foreach ($events as $event)
-        <div class="max-w-xs rounded overflow-hidden shadow-lg bg-gray-900 text-white ">
-                <img class="w-full" src="{{asset("img/audience-1853662_640.jpg")}}" alt="Product Image">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">{{ $event->name }}</div>
-                    <p class="text-gray-400 text-base">
-                        {{ $event->descriptions }}
-                    </p>
-                    <p class="text-gray-700 text-base">{{ $event->time }}</p>
-                </div>
-                <div class="px-6 pt-4 pb-2">
-                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#{{ $event->locations }}</span>
-                    <!-- You can add additional tags for product attributes or categories -->
-                </div>
-                <div class="px-6 pt-4 pb-2  text-3xl">
-                    <h1>Prix:  <span class="text-red-400">{{ $event->price }} dh</span> </h1>
-                </div>
-                <div class="px-6 pb-4 ml-16">
-                    <button class="bg-yellow-500 hover:bg-black  text-white font-bold py-2 px-4 rounded">
-                        Add to Cart
-                    </button>
-                </div>
+        <div class="max-w-xs mx-auto rounded-lg overflow-hidden shadow-lg bg-gray-900 text-white">
+            <img class="w-full h-48 object-cover object-center" src="{{ asset("img/audience-1853662_640.jpg") }}" alt="Event Image">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{{ $event->name }}</div>
+                <p class="text-gray-400 text-base">{{ $event->descriptions }}</p>
+                <p class="text-gray-700 text-base">{{ $event->time }}</p>
             </div>
-            @endforeach
+            <div class="px-6 py-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#{{ $event->locations }}</span>
+                <!-- Additional tags for event attributes or categories -->
+            </div>
+            <div class="px-6 pb-4">
+                <h1 class="text-xl font-bold text-red-400">Price: {{ $event->price }} DH</h1>
+            </div>
+            <div class="px-6 pb-4">
+                <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">
+                    Add to Cart
+                </button>
+            </div>
         </div>
+        @endforeach
     </div>
+    
     {{-- footer --}}
     <div class="bg-black text-white flex flex-col gap-5 p-3  border-t-2 border-y-amber-300">
         <div class="flex lg:flex flex-col lg:flex-row justify-around p-20 gap-9 lg:gap-9">
