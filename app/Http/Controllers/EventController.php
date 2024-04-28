@@ -61,38 +61,25 @@ class EventController extends Controller
 
         return back()->with('success', 'Event created successfully!');
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-        $request->validate([
-            'name' => 'required',
-            'descriptions' => 'required',
-            'dateStart' => 'required',
-            'timeStart' => 'required',
-            'dateEnd' => 'required',
-            'timeEnd' => 'required',
-            'locations'=> 'required',
-            'price'=> 'required',
-        ]);
 
-        $event = Event::findOrFail($id);
+        $user_id = Auth()->id();
+        $data = [
+            'user_id' => $user_id,
+            'name' => $request->name,
+            'descriptions' => $request->descriptions,
+            'dateStart' => $request->dateStart,
+            'dateEnd' => $request->dateEnd,
+            'timeStart' => $request->timeStart,
+            'timeEnd' => $request->timeEnd,
+            'locations' => $request->locations,
+            'price' => $request->price,
+        ];
 
-        // Ensure the user owns the event
-        if ($event->user_id != Auth::id()) {
-            return back()->with('error', 'You are not authorized to update this event');
-        }
+        $event->update($data);
 
-        $event->update([
-            "name" => $request->name,
-            "descriptions" => $request->descriptions,
-            "dateStart" => $request->dateStart,
-            "timeStart" => $request->timeStart,
-            "dateEnd" => $request->dateEnd,
-            "timeEnd" => $request->timeEnd,
-            'locations'=> $request->locations,
-            'price'=> $request->price,
-        ]);
-
-        return back()->with('success', 'Event updated successfully!');
+        return redirect()->route('event.index');
     }
 
     /**

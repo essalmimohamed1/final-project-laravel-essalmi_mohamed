@@ -32,7 +32,7 @@ Route::post('/organisateur/store', [EventController::class, 'store'])->name('eve
 
 // Route for showing all events, returns JSON
 Route::get('/organisateur/show', [EventController::class, 'show']);
-Route::put('/organisateur/{organisateur}', [EventController::class, 'update'])->name('events.update');
+Route::put('/organisateur/{event}', [EventController::class, 'update'])->name('events.update');
 Route::delete('/organisateur/{organisateur}', [EventController::class, 'destroy'])->name('events.destroy');
 
 // Include authentication-related routes

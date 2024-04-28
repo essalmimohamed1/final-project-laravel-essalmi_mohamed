@@ -80,12 +80,16 @@
             <div class="px-6 pt-4 pb-2 text-3xl">
                 <h1>Prix: <span class="text-red-400">{{ $event->price }} dh</span></h1>
             </div>
-            <div class="px-6 pb-4">
+            <div class="px-6 pb-4 flex flex-col gap-10">
                 <form action="{{ route('events.destroy', $event->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-600" type="submit">Delete</button>
                 </form>
+                <div class="flex flex-col items-center">
+                    <h1 class="text-3xl">Edit</h1>
+                    @include('organisateur.edite')
+                </div>
             </div>
         </div>
     </div>
