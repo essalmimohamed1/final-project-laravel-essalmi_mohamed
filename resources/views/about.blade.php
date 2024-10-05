@@ -4,10 +4,10 @@
             <div class="flex flex-col gap-4 lg:w-[calc(100% - 28vw)]">
                 <div class="flex flex-col gap-4">
                     <h1 class="text-gray-600 text-2xl lg:text-3xl">Our story</h1>
-                    <p class="text-gray-400 text-lg lg:text-xl">Phasellus egestas dui non, lobortis ultricies augue semper vitae. Vestibulum pharetra ante ac purus consectetur. Curabitur fringilla dolor lorem, nec molestie urna dapibus vel. Pellentesque porta neque bibendum est viverra. Vivamus lobortis magna interdum laoreet. Gravida elit quis, condimentum ex semper sit amet. Fusce magna eget ligula. Aliquam sodales imperdiet quam. Fringilla ut vehicula vehicula. Pellentesque congue ut gravida ac. Aliquam volutpat erat. Iaculis lectus donec facilisis, sodales eu sagittis. Etiam pellentesque, dictum rutrum magna, eleifend neque elit, tincidunt arcu sem. Rutrum turpis, commodo efficitur ut, convallis ipsum velit, maximus ligula ac ligula. Vivamus ultricies tristique vulputate. Ultrices vitae orci sed.</p>
+                    <p class="text-gray-400 text-lg lg:text-xl">Phasellus egestas dui non, lobortis ultricies augue semper vitae. Vestibulum pharetra ante ac purus consectetur. Curabitur fringilla dolor lorem, nec molestie urna dapibus vel. Pellentesque porta neque bibendum est viverra. Vivamus lobortis magna interdum laoreet. Gravida elit quis, condimentum ex semper sit amet. Fusce magna eget ligula. Aliquam sodales imperdiet quam. Fringilla ut vehicula vehicula. Pellentesque congue ut gravida ac. Aliquam volutpat erat. Iaculis lectus donec facilisis, sodales eu sagittis. Etiam pellentesque, dictum rutrum magna, eleifend neque elit, tincidunt arcu sem. Rutrum turpis, commodo efficitur ut.</p>
                 </div>
                 <div class="border-l-2 border-gray-300 pl-4 pt-2">
-                    <p class="text-gray-400 text-lg lg:text-xl">Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.</p>
+                    <p class="text-gray-400 text-lg lg:text-xl">Creativity is just connecting things. When you ask creative people how they did something.</p>
                     <p class="text-yellow-400">- Steve Job’s</p>
                 </div>
             </div>

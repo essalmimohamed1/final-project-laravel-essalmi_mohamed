@@ -1,70 +1,50 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Event</title>
+    <title>Event</title>
 
-        @vite(['resources/js/app.js'])
-        @vite('resources/css/app.css')
-    </head>
-    <body class="">
-        <nav class="navbar navbar-expand-lg bg-body-text-body-tertiary bg-black p-4">
-            <div class="container lg:flex lg:gap-80 sm:flex sm:flex-row sm:gap-0 lg:justify-between">
-                <a class="navbar-brand" href="/">
-                    <span class="text-4xl text-white font-extrabold w-[25vw]">Event<span class="text-yellow-400">.Mode</span></span>
-                </a>    
-            </div>
-        </nav>
-        <div class="absolute">
-            <img class="w-[100VW] h-[90vh]" src="{{asset('img/audience-1853662_640.jpg')}}" alt="">
+    <!-- Load CSS and JS via Vite -->
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+</head>
+<body class="bg-gray-900">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-black p-6 fixed w-full z-50">
+        <div class="container flex justify-between items-center">
+            <a class="navbar-brand text-4xl font-extrabold text-white" href="/">
+                Event<span class="text-yellow-400">.Mode</span>
+            </a>
         </div>
-        
-        
-            <div class="">
-                <div class="relative top-[500px]">
-                    <header class="">
-                        @if (Route::has('login'))
-                            <nav class=" flex justify-center items-center gap-7 ">
-                                @auth
-                                <div class="bg-amber-300 rounded-3xl w-[30vh] h-[7vh] pt-2.5 font-bold text-center">
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        class="text-decoration-none  text-white text-2xl"
+    </nav>
 
-                                    >
-                                        Dashboard
-                                    </a>
-                                </div>
-                                    
-                                @else
-                                <div class="bg-amber-300 rounded-3xl w-[30vh] h-[7vh] pt-2.5 font-bold text-center ">
-                                    <a
-                                        href="{{ route('login') }}"
-                                        class="text-decoration-none  text-white text-2xl"
-                                    >
-                                        Log in
-                                    </a>
-                                </div>
-                                    @if (Route::has('register'))
-                                    <div class="border-2 rounded-3xl w-[20vh] h-[7vh] pt-2.5 font-bold text-center ">
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="text-decoration-none  text-white text-2xl"                                        >
-                                            Register
-                                        </a>
-                                    </div>
-                                    @endif
-                                @endauth
-                            </nav>
+    <!-- Full-Page Background Image with Gradient Overlay -->
+    <div class="relative h-screen bg-cover bg-center" style="background-image: url('{{asset('img/audience-1853662_640.jpg')}}');">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90"></div>
+
+        <!-- Centered Content -->
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center">
+            <h1 class="text-white text-6xl font-extrabold mb-8">Welcome to Event.Mode</h1>
+            <p class="text-gray-300 text-xl mb-12">Your ultimate platform to create and manage unforgettable events.</p>
+
+            <!-- Auth Navigation -->
+            <div class="flex gap-6">
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full text-xl font-bold hover:bg-yellow-500 transition">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full text-xl font-bold hover:bg-yellow-500 transition">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="border-2 border-yellow-400 text-white px-8 py-4 rounded-full text-xl font-bold hover:bg-yellow-400 hover:text-gray-900 transition">Register</a>
                         @endif
-                    </header>
-                </div>
-                
+                    @endauth
+                @endif
             </div>
-        
-        
+        </div>
+    </div>
 
-    </body>
+</body>
 </html>

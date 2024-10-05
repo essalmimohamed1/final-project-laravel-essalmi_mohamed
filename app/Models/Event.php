@@ -19,6 +19,7 @@ class Event extends Model
         'timeEnd',
         'locations',
         'price',
+        'image',
     ];
     public function user(){
         return $this->belongsToMany(User::class, 'eventsusers');

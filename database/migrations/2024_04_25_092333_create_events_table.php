@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->time('timeEnd');
             $table->string('locations');
             $table->integer('price');
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

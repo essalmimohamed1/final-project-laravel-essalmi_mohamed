@@ -3,6 +3,7 @@
 use App\Http\Controllers\About;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\stripeController;
@@ -14,9 +15,10 @@ Route::get('/', function () {
 });
 
 // Route for the dashboard, accessible only to authenticated and verified users
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'showRandomEvent'])->name('event.random');
+
 
 // Routes for profile management
 Route::middleware('auth')->group(function () {
@@ -26,19 +28,31 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route for displaying the event organizer page
-Route::get('/organisateur', [EventController::class, 'index'])->name('event.index');
+Route::get('/event', [EventController::class, 'index'])->name('events.index');
 
 // Route for storing a new event
-Route::post('/organisateur/store', [EventController::class, 'store'])->name('event.store');
+Route::post('/events/store', [EventController::class, 'store'])->name('event.store');
+Route::get('/event/{event}/edit', [EventController::class, 'edit'])->name('event.edit');
+
+Route::get('/event', [EventController::class, 'fetch'])->name('event.fetch');
 
 // Route for showing all events, returns JSON
-Route::get('/organisateur/show', [EventController::class, 'show']);
-Route::put('/organisateur/{event}', [EventController::class, 'update'])->name('events.update');
-Route::delete('/organisateur/{organisateur}', [EventController::class, 'destroy'])->name('events.destroy');
+Route::get('/event/show', [EventController::class, 'show']);
+Route::put('/event/{event}', [EventController::class, 'update'])->name('events.update');
+Route::delete('/event/{organisateur}', [EventController::class, 'destroy'])->name('events.destroy');
+// Route for updating the event
+
+// Route to show the form for editing the event
+Route::get('/event/{id}/edit', [EventController::class, 'edit'])->name('organisateur.edit');
+
+// Route to update the event (PUT request)
+Route::put('/event/{id}', [EventController::class, 'update'])->name('organisateur.update');
 
 // Include authentication-related routes
 // Route for displaying the contact page
 // routes/web.php
+Route::resource('events', EventController::class);
+
 
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');

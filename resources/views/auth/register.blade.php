@@ -17,15 +17,6 @@
         </div>
 
         <!-- ROles -->
-        <div class="mt-4">
-            <x-input-label for="role" :value="__('Role')" />
-            <select name="role" class="mt-3 w-full bg-gray-600 text-white border-none" >
-                <option value="" selected disabled>Select a role</option>
-                @foreach ($roles as $role)
-                    <option value="{{ $role->name }}">{{ $role->name }}</option>
-                @endforeach
-            </select>
-        </div>
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />

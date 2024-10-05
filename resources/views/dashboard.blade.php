@@ -11,91 +11,157 @@
             </div>
         </div>
     </div>
+    <div class="flex flex-col items-center justify-center py-16 bg-black text-white">
+        <!-- Title Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-yellow-400">Upcoming Event</h1>
+            <p class="text-lg text-gray-400 mt-4">Don't miss out on our exciting event!</p>
+        </div>
+        <div class="max-w-4xl w-full bg-black border-yellow-400 border-2 rounded-lg shadow-2xl overflow-hidden">
+            <!-- Event Image -->
+            <div class="relative">
+                <img class="w-full h-72 object-cover object-center" src="{{ $event->image ? asset('storage/'.$event->image) : asset('img/default-event.jpg') }}" alt="{{ $event->name }}">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                    <h2 class="text-3xl font-bold text-yellow-400">{{ $event->name }}</h2>
+                </div>
+            </div>
+    
+            <!-- Event Content -->
+            <div class="p-6 space-y-6">
+                <p class="text-lg text-gray-400">{{ $event->descriptions }}</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-lg text-yellow-400">Time:</p>
+                        <p class="text-xl font-bold text-white">{{ $event->timeStart }} - {{ $event->timeEnd }}</p>
+                    </div>
+                    <div>
+                        <p class="text-lg text-yellow-400">Location:</p>
+                        <p class="text-xl font-bold text-white">{{ $event->locations }}</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <h3 class="text-2xl font-bold text-yellow-400">Price: {{ $event->price }} DH</h3>
+                    <form action="{{ route('event.pay', $event->id) }}" method="POST">
+                        @csrf
+                        <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg transition duration-300">
+                            Buy Event
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
     
     <div class="text-6xl bg-black text-yellow-300 font-medium text-center pt-20">
         <h1>Event categories</h1>
     </div>
-    <div class=" bg-black">
-        <div class='lg:flex lg:flex-row flex flex-col gap-8 p-20'>
-            <div class='flex flex-col w-full lg:w-[100%] gap-8 rounded'>
-                <div class='overflow-hidden relative'>
-                    <img class='hover:scale-110 duration-500' src='{{ asset("img/Parties.jpg") }}' alt='' />
-                    <div class='flex justify-center'>
-                        <button class='absolute bottom-9 bg-slate-100 hover:bg-orange-600 px-14 py-3 opacity-95 text-xl font-light shadow-lg text-black duration-500'>Social Events</button>
+    <div class="bg-black py-16">
+        <div class="lg:flex lg:flex-row flex flex-col gap-10 px-8 lg:px-20">
+            <!-- Category Column 1 -->
+            <div class="flex flex-col w-full lg:w-1/3 gap-10 rounded">
+                <!-- Event Card 1 -->
+                <div class="overflow-hidden relative group rounded-lg">
+                    <img class="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-500 rounded-lg" src='{{ asset("img/Parties.jpg") }}' alt='Social Events' />
+                    <div class="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                        <button class="bg-white hover:bg-yellow-500 text-black hover:text-white py-3 px-10 mb-6 text-lg font-medium rounded shadow-lg transition-all duration-300">Social Events</button>
                     </div>
                 </div>
-                <div class='overflow-hidden relative rounded'>
-                    <img class='hover:scale-110 duration-500' src='{{ asset("img/MoviE.jpg") }}' alt='' />
-                    <div class='flex justify-center'>
-                        <button class='absolute bottom-10 bg-slate-100 hover:bg-orange-600 px-14 py-3 opacity-95 text-xl font-light shadow-lg text-black duration-500'>Entertainment Events</button>
-                    </div>
-                </div>
-            </div>
-            <div class='flex flex-col w-full lg:w-[100%] gap-8 rounded'>
-                <div class='overflow-hidden relative'>
-                    <img class='hover:scale-110 duration-500' src='{{ asset("img/Conference-Center.jpg") }}' alt='' />
-                    <div class='flex justify-center'>
-                        <button class='absolute bottom-10 bg-slate-100 px-14 py-3 opacity-95 text-xl font-light shadow-lg text-black hover:bg-orange-500 duration-500'>Professional Event</button>
-                    </div>
-                </div>
-                <div class='overflow-hidden relative rounded'>
-                    <img class='hover:scale-110 duration-500' src='{{ asset("img/Mawazine.jpg") }}' alt='' />
-                    <div class='flex justify-center'>
-                        <button class='absolute bottom-9 bg-slate-50 px-14 py-3 opacity-95 text-xl font-light shadow-lg text-black hover:bg-orange-500 duration-500'>Cultural Events:</button>
+                <!-- Event Card 2 -->
+                <div class="overflow-hidden relative group rounded-lg">
+                    <img class="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-500 rounded-lg" src='{{ asset("img/MoviE.jpg") }}' alt='Entertainment Events' />
+                    <div class="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                        <button class="bg-white hover:bg-yellow-500 text-black hover:text-white py-3 px-10 mb-6 text-lg font-medium rounded shadow-lg transition-all duration-300">Entertainment Events</button>
                     </div>
                 </div>
             </div>
     
-            <div class='flex flex-col w-full lg:w-[100%] gap-8 rounded'>
-                <div class='overflow-hidden relative'>
-                    <img class='hover:scale-110 duration-500' src='{{ asset("img/match.jpg") }}' alt='' />
-                    <div class='flex justify-center'>
-                        <button class='absolute bottom-9 bg-slate-100 px-20 py-4 opacity-95 text-xl font-light shadow-lg text-black hover:bg-orange-500 duration-500'>Sports Events</button>
+            <!-- Category Column 2 -->
+            <div class="flex flex-col w-full lg:w-1/3 gap-10 rounded">
+                <!-- Event Card 3 -->
+                <div class="overflow-hidden relative group rounded-lg">
+                    <img class="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-500 rounded-lg" src='{{ asset("img/Conference-Center.jpg") }}' alt='Professional Events' />
+                    <div class="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                        <button class="bg-white hover:bg-yellow-500 text-black hover:text-white py-3 px-10 mb-6 text-lg font-medium rounded shadow-lg transition-all duration-300">Professional Events</button>
                     </div>
                 </div>
-                <div class='overflow-hidden relative rounded'>
-                    <img class='hover:scale-110 duration-500' src='{{ asset("img/FashionShows.jpg") }}' alt='' />
-                    <div class='flex justify-center'>
-                        <button class='absolute bottom-10 bg-slate-100 px-14 py-3 opacity-95 text-xl font-light shadow-lg text-black hover:bg-orange-500 duration-500'>Beauty Events</button>
+                <!-- Event Card 4 -->
+                <div class="overflow-hidden relative group rounded-lg">
+                    <img class="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-500 rounded-lg" src='{{ asset("img/Mawazine.jpg") }}' alt='Cultural Events' />
+                    <div class="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                        <button class="bg-white hover:bg-yellow-500 text-black hover:text-white py-3 px-10 mb-6 text-lg font-medium rounded shadow-lg transition-all duration-300">Cultural Events</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Category Column 3 -->
+            <div class="flex flex-col w-full lg:w-1/3 gap-10 rounded">
+                <!-- Event Card 5 -->
+                <div class="overflow-hidden relative group rounded-lg">
+                    <img class="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-500 rounded-lg" src='{{ asset("img/match.jpg") }}' alt='Sports Events' />
+                    <div class="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                        <button class="bg-white hover:bg-yellow-500 text-black hover:text-white py-3 px-10 mb-6 text-lg font-medium rounded shadow-lg transition-all duration-300">Sports Events</button>
+                    </div>
+                </div>
+                <!-- Event Card 6 -->
+                <div class="overflow-hidden relative group rounded-lg">
+                    <img class="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-500 rounded-lg" src='{{ asset("img/FashionShows.jpg") }}' alt='Beauty Events' />
+                    <div class="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                        <button class="bg-white hover:bg-yellow-500 text-black hover:text-white py-3 px-10 mb-6 text-lg font-medium rounded shadow-lg transition-all duration-300">Beauty Events</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="text-4xl font-medium text-center py-8 md:py-10 bg-black text-yellow-300">
-        <h1>Our Events</h1>
+    
+    <div class="bg-black p-6 md:p-10 lg:p-20">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-yellow-400 text-center mb-10">Upcoming Events</h1>
+            <p class="text-lg text-gray-400 mt-4">Be Part of the Action</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-7">
+            @foreach ($events as $event)
+            <div class="flex items-center justify-center  bg-black text-white">
+                <div class="max-w-4xl w-full bg-black border-[1.5px] border-yellow-400 rounded-lg shadow-2xl overflow-hidden">
+                    <!-- Event Image -->
+                    <div class="relative">
+                        <img class="w-full h-72 object-cover object-center" src="{{ $event->image ? asset('storage/'.$event->image) : asset('img/default-event.jpg') }}" alt="{{ $event->name }}">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h2 class="text-3xl font-bold text-yellow-400">{{ $event->name }}</h2>
+                        </div>
+                    </div>
+                
+                    <!-- Event Content -->
+                    <div class="p-6 space-y-6">
+                        <p class="text-lg text-gray-400">{{ $event->descriptions }}</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-lg text-yellow-400">Time:</p>
+                                <p class="text-xl font-bold text-white">{{ $event->timeStart }} - {{ $event->timeEnd }}</p>
+                            </div>
+                            <div>
+                                <p class="text-lg text-yellow-400">Location:</p>
+                                <p class="text-xl font-bold text-white">{{ $event->locations }}</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-2xl font-bold text-yellow-400">Price: <span class="text-white">{{ $event->price }} DH</span></h3>
+                            <form action="{{ route('event.pay', $event->id) }}" method="POST">
+                                @csrf
+                                <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg transition duration-300">
+                                    Buy Event
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 md:p-10 lg:p-20 bg-black">
-        @foreach ($events as $event)
-        <div class="max-w-xs mx-auto rounded-lg overflow-hidden shadow-lg bg-gray-900 text-white">
-            <img class="w-full h-48 object-cover object-center" src="{{ asset("img/audience-1853662_640.jpg") }}" alt="Event Image">
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">{{ $event->name }}</div>
-                <p class="text-gray-400 text-base">{{ $event->descriptions }}</p>
-                <p class="text-gray-700 text-base">{{ $event->time }}</p>
-            </div>
-            <div class="px-6 py-2">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#{{ $event->locations }}</span>
-                <!-- Additional tags for event attributes or categories -->
-            </div>
-            <div class="px-6 pb-4">
-                <h1 class="text-xl font-bold text-red-400">Price: {{ $event->price }} DH</h1>
-            </div>
-            <div class="flex gap-3">
-                <form action="{{ route('event.pay', $event->id) }}" method="post">
-                    @csrf
-                    <input type="hidden" name="eventId" value="{{ $event->id }}">
-                    <!-- Use eventId instead of event_id -->
-                    <input type="hidden" name="name" value="{{ $event->name }}">
-                    <input type="hidden" name="price" value="{{ $event->price }}">
-                    <input type="hidden" name="description" value="{{ $event->description }}">
-                    <button class="btn btn-primary text-red-700 p-7 text-2xl rounded-2xl ml-16">Buy event</button>
-            </form>
-            </div>
-        </div>
-        @endforeach
-    </div>
     
     {{-- footer --}}
     <div class="bg-black text-white flex flex-col gap-5 p-3  border-t-2 border-y-amber-300">
